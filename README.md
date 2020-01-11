@@ -1,2 +1,4 @@
 # dotfiles
-rice + configurations
+rice + configurations + scripts
+
+
