@@ -17,6 +17,8 @@ runtime! archlinux.vim
 " do not load defaults if ~/.vimrc is missing
 "let skip_defaults_vim=1
 
+" Get the defaults that most users want
+source $VIMRUNTIME/defaults.vim
 
 set hlsearch
 set nu
