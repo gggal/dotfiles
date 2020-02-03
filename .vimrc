@@ -31,3 +31,8 @@ if has("autocmd")
     \| exe "normal! g'\"" | endif
 endif
 
+set ignorecase
+set smartcase
+
+" Convert TABs to spaces
+"set expandtab
