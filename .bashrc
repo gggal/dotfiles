@@ -98,6 +98,7 @@ alias free='free -m'                      # show sizes in MB
 alias np='nano -w PKGBUILD'
 alias more=less
 alias ll='ls -al'
+alias shutdown='shutdown now'
 xhost +local:root > /dev/null 2>&1
 
 complete -cf sudo
