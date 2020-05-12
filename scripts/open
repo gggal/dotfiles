@@ -1,9 +1,40 @@
 #!/bin/bash
 
-# This script is to be used when opening files from the terminal. It dissociates the new window and the terminal, allowing the latter to be closed without closing the former.
+# This script is to be used when opening files / running commands from the terminal. It dissociates the new window and the terminal, allowing the latter to be closed without closing the former.
+
 if [ $# -ne 1 ] ; then
 	echo "Missing file to open"
        	exit 1
 fi
 
-{ nohup xdg-open "$1" & } ; exit
+if [ -z $1 ] ; then
+	echo "Empty string is not a valid command/file name"
+	exit 2
+fi
+
+# check if the input is a file
+ls $1 >/dev/null 2>&1
+is_file="$?"
+
+# check if the input is a command
+which $1 >/dev/null 2>&1
+is_command="$?"
+
+if [ $is_file -eq 0 ]; then
+	nohup xdg-open "$1" > /dev/null 2>&1 &
+
+elif [ $is_command -eq 0 ]; then 
+	nohup "$1" > /dev/null 2>&1 &
+
+else
+	echo "$1: no such command or file"
+	exit 3
+fi
+
+if [ $? -ne 0 ] ; then
+	echo "Failed to open file / run command $1"
+	exit 4
+fi
+
+exit 0
+
