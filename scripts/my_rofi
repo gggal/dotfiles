@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# customized rofi command, ready for a keybinding
+rofi -show run -disable-history -hide-scrollbar -lines 5 -theme Pop-Dark
