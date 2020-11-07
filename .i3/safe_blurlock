@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Only lock the screen if nothing is playing.
+# Call blurlock if the screen is inactive and can be locked, exit otherwise.
+
+audio_state=`pactl list short sinks | cut -f5` # get current audio state
+
+if [ $audio_state == 'RUNNING' ]
+then
+	exit 1
+else
+	blurlock
+	exit 0
+fi
